@@ -3,3 +3,5 @@ dist/
 .env
 .env.local
 .vercel/public/course-project/demo-video.mp4
+
+/public/course-project/demo-video.mp4
