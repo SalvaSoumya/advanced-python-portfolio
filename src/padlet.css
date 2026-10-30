@@ -1,0 +1,708 @@
+
+.padlet-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 75px 32px 110px;
+  color: #263e4a;
+}
+
+.padlet-hero {
+  max-width: 800px;
+  margin: 0 auto 95px;
+  text-align: center;
+}
+
+.padlet-eyebrow,
+.padlet-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #558f83;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.padlet-hero h1 {
+  font-family: Manrope, sans-serif;
+  font-size: clamp(44px, 6vw, 77px);
+  letter-spacing: -3px;
+  line-height: 1.16;
+  margin: 25px 0;
+}
+
+.padlet-hero h1 em {
+  color: #548e86;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+}
+
+.padlet-hero > p {
+  color: #71817a;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+.padlet-stat-grid {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.padlet-stat {
+  background: white;
+  border: 1px solid #e3eae4;
+  border-radius: 17px;
+  min-width: 150px;
+  padding: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.padlet-stat strong {
+  font-size: 29px;
+  color: #397b6f;
+  font-family: Manrope, sans-serif;
+}
+
+.padlet-stat span {
+  color: #81938a;
+  font-size: 12px;
+}
+
+.padlet-section-heading {
+  margin-bottom: 30px;
+}
+
+.padlet-section-heading h2 {
+  font-size: clamp(27px, 4vw, 38px);
+  letter-spacing: -1.3px;
+  margin: 12px 0;
+}
+
+.padlet-section-heading p {
+  color: #7a8a81;
+  line-height: 1.8;
+  max-width: 650px;
+  font-size: 14px;
+}
+
+.padlet-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.padlet-gallery-card {
+  border: 1px solid #e2eae3;
+  background: white;
+  text-align: left;
+  padding: 13px;
+  border-radius: 21px;
+  cursor: zoom-in;
+  transition: .25s ease;
+  color: inherit;
+}
+
+.padlet-gallery-card:hover,
+.padlet-problem-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(32, 65, 54, .08);
+}
+
+.padlet-gallery-image {
+  position: relative;
+  height: 280px;
+  background: #e8ede9;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.padlet-gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.padlet-view-label {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: white;
+  border-radius: 9px;
+  padding: 9px 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #397a6c;
+}
+
+.padlet-gallery-info {
+  padding: 18px 11px 12px;
+}
+
+.padlet-gallery-info > span {
+  color: #629487;
+  letter-spacing: 1.2px;
+  font-weight: 800;
+  font-size: 10px;
+}
+
+.padlet-gallery-info h3 {
+  margin: 12px 0 8px;
+  font-size: 21px;
+}
+
+.padlet-gallery-info p {
+  color: #85948b;
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+.padlet-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.padlet-overview-card {
+  background: #edf4ee;
+  border: 1px solid #dceae0;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.padlet-overview-icon {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  background: white;
+  color: #4d877a;
+  border-radius: 13px;
+  margin-bottom: 20px;
+}
+
+.padlet-overview-card h3 {
+  font-size: 21px;
+  margin-bottom: 15px;
+}
+
+.padlet-overview-card p {
+  color: #72857a;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.padlet-learning-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.padlet-learning-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13px;
+  color: #6e8277;
+  line-height: 1.6;
+}
+
+.padlet-learning-list svg {
+  color: #629d8b;
+  flex-shrink: 0;
+}
+
+.padlet-actions {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.padlet-primary-action,
+.padlet-secondary-action {
+  padding: 15px 19px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: transform .2s ease;
+}
+
+.padlet-primary-action {
+  background: #244d4b;
+  color: white;
+}
+
+.padlet-secondary-action {
+  background: white;
+  color: #315e56;
+  border: 1px solid #dde8de;
+}
+
+.padlet-primary-action:hover,
+.padlet-secondary-action:hover {
+  transform: translateY(-3px);
+}
+
+.padlet-problems-section {
+  margin-top: 110px;
+}
+
+.padlet-filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.padlet-filter-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #507c72;
+}
+
+.padlet-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.padlet-filters button {
+  border: 1px solid #e0e8df;
+  background: white;
+  color: #6d8276;
+  border-radius: 100px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.padlet-filters button.selected {
+  background: #244d4b;
+  color: white;
+  border-color: #244d4b;
+}
+
+.padlet-filters button span {
+  opacity: .7;
+}
+
+.padlet-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.padlet-problem-card {
+  background: white;
+  border: 1px solid #e2e9e1;
+  border-radius: 19px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  transition: .25s ease;
+}
+
+.padlet-problem-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.padlet-problem-number {
+  color: #83ac9e;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.padlet-difficulty {
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 30px;
+  padding: 8px 13px;
+}
+
+.padlet-difficulty.easy {
+  color: #287b65;
+  background: #e3f3e8;
+}
+
+.padlet-difficulty.medium {
+  color: #997329;
+  background: #fff2d7;
+}
+
+.padlet-difficulty.hard {
+  color: #b64e58;
+  background: #fbe9eb;
+}
+
+.padlet-problem-card h3 {
+  margin: 26px 0 12px;
+  font-size: 23px;
+  letter-spacing: -.5px;
+}
+
+.padlet-topic {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #649083;
+}
+
+.padlet-summary {
+  font-size: 14px;
+  color: #79887f;
+  line-height: 1.85;
+  margin: 23px 0;
+}
+
+.padlet-learned {
+  display: flex;
+  gap: 11px;
+  background: #f2f7f1;
+  border-radius: 12px;
+  padding: 15px;
+  color: #658476;
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.padlet-learned svg {
+  flex-shrink: 0;
+  color: #609483;
+}
+
+.padlet-problem-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #397f70;
+  border-top: 1px solid #e9eee8;
+  margin-top: auto;
+  padding-top: 22px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.padlet-learned + .padlet-problem-link {
+  margin-top: 24px;
+}
+
+.padlet-reflection {
+  background: #eaf1e9;
+  border: 1px solid #d9e8dd;
+  border-radius: 25px;
+  text-align: center;
+  padding: 55px 30px;
+  margin-top: 90px;
+  color: #508c7e;
+}
+
+.padlet-reflection > span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  margin-top: 17px;
+}
+
+.padlet-reflection h2 {
+  max-width: 680px;
+  margin: 20px auto;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(27px, 4vw, 44px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: #305a53;
+}
+
+.padlet-reflection p {
+  max-width: 650px;
+  margin: 12px auto;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #718b7d;
+}
+
+.padlet-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 23, 25, .94);
+  padding: 60px 20px;
+}
+
+.padlet-lightbox-close {
+  position: absolute;
+  top: 23px;
+  right: 23px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  color: #294b46;
+  display: grid;
+  place-items: center;
+}
+
+.padlet-lightbox-content {
+  text-align: center;
+  color: white;
+}
+
+.padlet-lightbox-content img {
+  max-width: 95vw;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 9px;
+}
+
+.padlet-lightbox-content p {
+  color: #d6e4dc;
+  font-size: 13px;
+}
+
+@media (max-width: 760px) {
+  .padlet-page {
+    padding: 50px 20px 75px;
+  }
+
+  .padlet-gallery,
+  .padlet-overview-grid,
+  .padlet-problem-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .padlet-gallery-image {
+    height: 220px;
+  }
+
+  .padlet-overview-card,
+  .padlet-problem-card {
+    padding: 22px;
+  }
+
+  .padlet-actions {
+    flex-direction: column;
+  }
+
+  .padlet-primary-action,
+  .padlet-secondary-action {
+    justify-content: center;
+  }
+
+  .padlet-problems-section {
+    margin-top: 70px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .padlet-gallery-card,
+  .padlet-problem-card,
+  .padlet-primary-action,
+  .padlet-secondary-action {
+    transition: none;
+  }
+}
+
+/* ===========================================
+   PADLET PAGE — COMPACT LAYOUT REFINEMENT
+   =========================================== */
+
+/* Reduce unnecessary top and bottom spacing */
+.padlet-page {
+  padding-top: 42px;
+  padding-bottom: 45px;
+}
+
+/* Compact hero section */
+.padlet-hero {
+  margin-bottom: 48px;
+}
+
+.padlet-hero h1 {
+  font-size: clamp(43px, 5.5vw, 68px);
+  margin: 16px 0 18px;
+  line-height: 1.15;
+}
+
+/* Better introduction readability */
+.padlet-hero > p {
+  max-width: 670px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* Keep statistics close to introduction */
+.padlet-stat-grid {
+  margin-top: 25px;
+  gap: 12px;
+}
+
+.padlet-stat {
+  padding: 16px;
+  min-width: 135px;
+}
+
+.padlet-stat strong {
+  font-size: 25px;
+}
+
+/* Consistent section heading spacing */
+.padlet-section-heading {
+  margin-bottom: 20px;
+}
+
+.padlet-section-heading h2 {
+  margin: 8px 0 9px;
+  font-size: clamp(26px, 3.5vw, 34px);
+}
+
+.padlet-section-heading p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Screenshot gallery */
+.padlet-gallery {
+  gap: 16px;
+}
+
+.padlet-gallery-image {
+  height: 240px;
+}
+
+.padlet-gallery-info {
+  padding: 13px 10px 8px;
+}
+
+.padlet-gallery-info h3 {
+  margin: 8px 0 5px;
+}
+
+.padlet-gallery-info p {
+  margin: 0;
+}
+
+/* Explanation cards */
+.padlet-overview-grid {
+  margin-top: 22px;
+  gap: 16px;
+}
+
+.padlet-overview-card {
+  padding: 24px;
+}
+
+.padlet-overview-icon {
+  margin-bottom: 14px;
+}
+
+.padlet-overview-card h3 {
+  margin: 8px 0 12px;
+}
+
+.padlet-overview-card p {
+  line-height: 1.75;
+}
+
+/* Padlet links */
+.padlet-actions {
+  margin-top: 20px;
+  gap: 10px;
+}
+
+/* Reduce huge gap before LeetCode */
+.padlet-problems-section {
+  margin-top: 48px;
+}
+
+/* Difficulty filter spacing */
+.padlet-filter-bar {
+  margin: 20px 0;
+}
+
+/* LeetCode cards */
+.padlet-problem-grid {
+  gap: 16px;
+}
+
+.padlet-problem-card {
+  padding: 24px;
+}
+
+.padlet-problem-card h3 {
+  margin: 17px 0 10px;
+}
+
+.padlet-summary {
+  margin: 16px 0;
+  line-height: 1.75;
+}
+
+.padlet-learned {
+  padding: 13px;
+}
+
+.padlet-learned + .padlet-problem-link {
+  margin-top: 18px;
+}
+
+/* Remove reflection styling if section is absent */
+.padlet-reflection {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 760px) {
+  .padlet-page {
+    padding: 30px 20px 35px;
+  }
+
+  .padlet-hero {
+    margin-bottom: 35px;
+  }
+
+  .padlet-problems-section {
+    margin-top: 35px;
+  }
+
+  .padlet-gallery-image {
+    height: 210px;
+  }
+
+  .padlet-overview-card,
+  .padlet-problem-card {
+    padding: 20px;
+  }
+}

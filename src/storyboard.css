@@ -1,0 +1,369 @@
+
+.storyboard-page {
+  max-width: 1180px;
+  margin: auto;
+  padding: 75px 32px 110px;
+  color: #263e4a;
+}
+
+.storyboard-intro {
+  max-width: 780px;
+  margin: 0 auto 70px;
+  text-align: center;
+}
+
+.storyboard-eyebrow,
+.storyboard-small-label {
+  color: #548e86;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.storyboard-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.storyboard-intro h1 {
+  font-family: Manrope, sans-serif;
+  font-size: clamp(45px, 6vw, 76px);
+  letter-spacing: -3px;
+  line-height: 1.15;
+  margin: 25px 0;
+}
+
+.storyboard-intro h1 em {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  color: #548e86;
+}
+
+.storyboard-intro p,
+.storyboard-section-heading p {
+  color: #74847d;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.storyboard-image-card {
+  padding: 25px;
+  border-radius: 24px;
+  background: white;
+  border: 1px solid #e2e9e3;
+  box-shadow: 0 15px 45px rgba(30, 60, 52, .05);
+}
+
+.storyboard-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.storyboard-card-header h2 {
+  font-size: 24px;
+  margin: 10px 0 0;
+}
+
+.storyboard-category {
+  background: #edf4ee;
+  color: #4f8578;
+  font-size: 12px;
+  padding: 11px 15px;
+  border-radius: 30px;
+  white-space: nowrap;
+}
+
+.storyboard-image-button {
+  display: block;
+  width: 100%;
+  position: relative;
+  border: 0;
+  padding: 12px;
+  background: #f5f7f3;
+  border-radius: 15px;
+  cursor: zoom-in;
+}
+
+.storyboard-image-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 700px;
+  object-fit: contain;
+}
+
+.storyboard-zoom {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background: white;
+  border-radius: 10px;
+  padding: 11px 14px;
+  color: #397c70;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.storyboard-caption {
+  color: #87948d;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 19px;
+}
+
+.storyboard-section-heading {
+  margin: 85px 0 30px;
+}
+
+.storyboard-section-heading h2 {
+  font-size: clamp(27px, 4vw, 39px);
+  letter-spacing: -1px;
+  margin: 13px 0;
+}
+
+.storyboard-concepts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.storyboard-concept-card {
+  background: white;
+  padding: 25px;
+  border-radius: 18px;
+  border: 1px solid #e3eae4;
+}
+
+.storyboard-concept-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #e7f0e9;
+  color: #508678;
+  margin-bottom: 22px;
+}
+
+.storyboard-concept-card > span {
+  color: #669589;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.storyboard-concept-card h3 {
+  margin: 10px 0;
+  font-size: 19px;
+}
+
+.storyboard-concept-card p {
+  color: #79877e;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.storyboard-explanation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  margin-top: 90px;
+}
+
+.storyboard-explanation-copy h2 {
+  font-size: 34px;
+  letter-spacing: -1px;
+  line-height: 1.3;
+}
+
+.storyboard-explanation-copy > p {
+  color: #74847b;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.storyboard-note {
+  background: #eaf2ec;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  color: #4a8174;
+  margin-top: 24px;
+}
+
+.storyboard-note p {
+  margin: 0;
+  line-height: 1.8;
+  font-size: 13px;
+}
+
+.storyboard-steps {
+  background: white;
+  border: 1px solid #e3e9e3;
+  border-radius: 20px;
+  padding: 30px;
+}
+
+.storyboard-step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid #edf0eb;
+}
+
+.storyboard-step:last-child {
+  border-bottom: 0;
+}
+
+.storyboard-step-number {
+  color: #559083;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.storyboard-step p {
+  color: #718078;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.storyboard-learning-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.storyboard-learning-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #e2e9e3;
+  border-radius: 13px;
+  color: #548a7e;
+}
+
+.storyboard-learning-item p {
+  color: #708079;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.storyboard-reflection {
+  margin-top: 90px;
+  padding: 55px 30px;
+  text-align: center;
+  border-radius: 24px;
+  background: #eaf2e9;
+  color: #5b9082;
+}
+
+.storyboard-reflection > span {
+  display: block;
+  margin-top: 18px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.storyboard-reflection h2 {
+  max-width: 680px;
+  margin: 18px auto;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(27px, 4vw, 42px);
+  line-height: 1.4;
+  font-weight: 500;
+  color: #355e54;
+}
+
+.storyboard-reflection p {
+  max-width: 660px;
+  margin: auto;
+  color: #70877a;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.storyboard-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 19, 22, .95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 15px;
+}
+
+.storyboard-lightbox img {
+  width: auto;
+  max-width: 96vw;
+  max-height: 88vh;
+  object-fit: contain;
+}
+
+.storyboard-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  color: #244d4b;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .storyboard-concepts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .storyboard-page {
+    padding: 50px 20px 75px;
+  }
+
+  .storyboard-card-header,
+  .storyboard-explanation {
+    display: block;
+  }
+
+  .storyboard-category {
+    display: inline-block;
+    margin-top: 15px;
+  }
+
+  .storyboard-image-card {
+    padding: 14px;
+  }
+
+  .storyboard-concepts,
+  .storyboard-learning-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .storyboard-steps {
+    margin-top: 25px;
+  }
+
+  .storyboard-section-heading {
+    margin-top: 60px;
+  }
+}
