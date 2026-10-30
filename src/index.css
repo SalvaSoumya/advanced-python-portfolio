@@ -1443,3 +1443,153 @@ body {
     flex-shrink: 0;
   }
 }
+
+/* ============================================
+   FINAL HEADER & NAVIGATION FIX
+   ============================================ */
+
+/* Desktop: one row, no horizontal scrolling */
+@media (min-width: 1201px) {
+  .site-header {
+    width: 100%;
+    max-width: 1600px;
+    height: 84px;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    gap: 9px;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .brand > span:last-child {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .brand-mark {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+  }
+
+  .floating-nav {
+    position: static;
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: auto;
+    max-width: none;
+    min-width: 0;
+    margin-left: auto;
+    padding: 5px;
+    gap: 2px;
+    overflow: visible;
+    transform: none;
+    scrollbar-width: none;
+    border-radius: 50px;
+  }
+
+  .floating-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .floating-nav .nav-item {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 10px 8px;
+    font-size: 11px;
+    line-height: 1.3;
+    letter-spacing: -0.1px;
+    white-space: nowrap;
+  }
+
+  /* Hide icons only inside desktop navigation
+     so all ten labels fit neatly */
+  .floating-nav .nav-item svg {
+    display: none;
+  }
+
+  .mobile-menu-toggle,
+  .mobile-nav {
+    display: none;
+  }
+}
+
+/* Smaller laptops and tablets:
+   use a proper menu instead of a scrollbar */
+@media (min-width: 761px) and (max-width: 1200px) {
+  .site-header {
+    height: 80px;
+    padding: 0 24px;
+    gap: 16px;
+  }
+
+  .brand {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+    font-size: 15px;
+  }
+
+  .brand > span:last-child {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .floating-nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    margin-left: auto;
+    flex-shrink: 0;
+    border: 1px solid #d8e5dc;
+    border-radius: 12px;
+    background: white;
+    color: #244d4b;
+    cursor: pointer;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* Keep the name on one line on phones too */
+@media (max-width: 760px) {
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+  }
+
+  .brand > span:last-child {
+    display: inline;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+}
