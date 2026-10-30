@@ -541,19 +541,14 @@ function StarsPage() {
           <Heart size={24} />
         </span>
         <span className="section-kicker">A HEARTFELT THANK YOU</span>
-        <h2>Thank you for making learning feel special, Ma’am.</h2>
-        <p>Dear Dr. Sharmila Banu K Ma’am,</p>
+        <p>Dear Ma’am,</p>
         <p>
           Thank you for encouraging us to come forward, answer
           questions, volunteer and express our ideas confidently.
           You pushed us beyond simply listening in class and helped
           us become active participants in our own learning.
         </p>
-        <p>
-          Whether it was coming to the dais to write code,
-          explaining something on the board or trying to answer a
-          question, your encouragement made every attempt feel valuable.
-        </p>
+        
         <p>
           The stars brought out the childlike excitement in us and
           made us look forward to participating every day. More than
@@ -565,7 +560,7 @@ function StarsPage() {
           making Advanced Python Programming such a memorable journey!
         </p>
         <div className="stars-signature">
-          With gratitude and happiness,
+          With gratitude.
           <strong>Salva Soumya ♡</strong>
         </div>
       </div>
