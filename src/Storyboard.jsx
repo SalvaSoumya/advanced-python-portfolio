@@ -1,11 +1,9 @@
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   BookOpen,
   CheckCircle2,
   ChefHat,
-  GitBranch,
   Heart,
   Layers,
   LockKeyhole,
@@ -16,270 +14,189 @@ import {
 } from "lucide-react";
 import "./storyboard.css";
 
-const storyboardImage =
-  "/storyboard/multithreading-storyboard.png";
+const storyboardImage = "/storyboard/multithreading-storyboard.png";
 
-const concepts = [
+const characters = [
   {
     icon: ChefHat,
-    title: "The Main Thread",
-    subtitle: "Our Head Chef",
+    label: "THE HEAD CHEF",
+    title: "Main Thread",
     description:
-      "Sets up the shared priority queue, creates worker threads and coordinates the overall workflow.",
+      "Prepares the kitchen: creates the shared queue, starts the workers and coordinates when work is finished.",
   },
   {
     icon: Users,
+    label: "THE KITCHEN TEAM",
     title: "Worker Threads",
-    subtitle: "Our Kitchen Team",
     description:
-      "Multiple workers run concurrently, waiting for available tasks and processing the ones they receive.",
+      "Like chefs handling different orders, workers take available tasks and work concurrently.",
   },
   {
     icon: Layers,
+    label: "THE ORDER RAIL",
     title: "Priority Queue",
-    subtitle: "The Order Rail",
     description:
-      "Organizes tasks by priority so workers retrieve the most important available work first.",
+      "Keeps incoming orders organized by task priority, so workers can pick up the most urgent available order first.",
   },
   {
     icon: LockKeyhole,
-    title: "Synchronization",
-    subtitle: "Working Together Safely",
+    label: "KITCHEN COORDINATION",
+    title: "Safe Sharing",
     description:
-      "Thread-safe queue operations and appropriate locks help coordinate access to shared resources.",
+      "A thread-safe queue coordinates task handoffs; other shared data may still need locks to prevent conflicts.",
   },
 ];
 
-const steps = [
-  "The main thread prepares the shared resources and priority queue.",
-  "Worker threads are created and started.",
-  "Workers wait for tasks while the queue is empty.",
-  "The main thread adds prioritized tasks to the queue.",
-  "Workers retrieve tasks safely and process them concurrently.",
-  "The main thread and workers coordinate completion and shutdown.",
+const workflow = [
+  { title: "Prepare the kitchen", text: "The main thread creates a shared priority queue and sets up the workers." },
+  { title: "Start the team", text: "Worker threads begin running and wait for orders to arrive." },
+  { title: "Add the orders", text: "Tasks are placed in the queue with assigned priorities." },
+  { title: "Pick the next order", text: "An available worker retrieves the highest-priority waiting task according to the queue's ordering." },
+  { title: "Work together", text: "Workers process tasks concurrently, while the queue manages safe retrieval." },
+  { title: "Close the kitchen", text: "After the queued work is completed, the program signals workers to finish and joins them." },
 ];
 
-function Storyboard() {
+const takeaways = [
+  "I understood how the main thread and worker threads have different responsibilities.",
+  "I learned how a priority queue organizes tasks without deciding which thread runs first.",
+  "I saw why safe access to shared resources matters in concurrent programs.",
+  "Turning code into a kitchen story made the workflow easier to explain and remember.",
+];
+
+export default function Storyboard() {
   const [imageOpen, setImageOpen] = useState(false);
+
+  useEffect(() => {
+    if (!imageOpen) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setImageOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [imageOpen]);
 
   return (
     <section className="storyboard-page page-enter">
-      <div className="storyboard-intro">
+      <header className="storyboard-intro">
         <span className="storyboard-eyebrow">
-          <Sparkles size={16} />
-          CREATIVE PYTHON LEARNING
+          <Sparkles size={15} /> CREATIVE PYTHON LEARNING
         </span>
-
         <h1>
-          Python Through
-          <br />
-          <em>Storytelling.</em>
+          Understanding Python <em>through a story.</em>
         </h1>
-
         <p>
-          For this classroom activity, we explored the
-          concept of multithreading using a priority queue
-          through a creative kitchen-themed storyboard.
-          Instead of looking at code alone, we represented
-          threads, tasks and synchronization as characters
-          and activities in a busy restaurant.
+          For a classroom activity, we were asked to explain <strong>multithreading using a priority queue</strong>
+          in a creative way. I imagined a busy restaurant kitchen, where orders keep coming in and several
+          chefs work together. That simple idea helped turn an abstract Python concept into something I
+          could picture and explain.
         </p>
-      </div>
+        <div className="storyboard-intro-tags" aria-label="Concepts covered">
+          <span>Multithreading</span><span>Priority Queue</span><span>Synchronization</span>
+        </div>
+      </header>
 
-      <div className="storyboard-image-card">
+      <section className="storyboard-image-card" aria-labelledby="storyboard-art-title">
         <div className="storyboard-card-header">
           <div>
-            <span className="storyboard-small-label">
-              MY CLASSROOM STORYBOARD
-            </span>
-            <h2>Multithreading Using Priority Queue</h2>
+            <span className="storyboard-small-label">MY ORIGINAL CLASSROOM WORK</span>
+            <h2 id="storyboard-art-title">A Busy Kitchen, Many Threads</h2>
+            <p>A visual analogy for how Python workers receive and process prioritized tasks.</p>
           </div>
-          <span className="storyboard-category">
-            Python • Concurrency
-          </span>
+          <span className="storyboard-category">Python · Concurrency</span>
         </div>
-
         <button
-          type="button"
           className="storyboard-image-button"
+          type="button"
           onClick={() => setImageOpen(true)}
-          aria-label="Enlarge storyboard"
+          aria-label="Open the full-size multithreading storyboard"
         >
-          <img
-            src={storyboardImage}
-            alt="Kitchen-themed flow diagram illustrating Python multithreading using a priority queue"
-          />
-
-          <span className="storyboard-zoom">
-            <Maximize2 size={16} />
-            View full storyboard
-          </span>
+          <img src={storyboardImage} alt="Original kitchen-themed multithreading and priority queue storyboard" />
+          <span className="storyboard-zoom"><Maximize2 size={16} /> View full storyboard</span>
         </button>
+        <p className="storyboard-caption">Click the image to see the full storyboard and read its details.</p>
+      </section>
 
-        <p className="storyboard-caption">
-          A visual explanation of how the main thread,
-          worker threads, a priority queue and shared
-          resources work together.
-        </p>
-      </div>
-
-      <div className="storyboard-section-heading">
-        <span className="storyboard-small-label">
-          UNDERSTANDING THE IDEA
-        </span>
-        <h2>Meet the Characters</h2>
-        <p>
-          Each character and object in the kitchen
-          represents an important programming concept.
-        </p>
-      </div>
-
-      <div className="storyboard-concepts">
-        {concepts.map((concept) => {
-          const Icon = concept.icon;
-
-          return (
-            <article
-              className="storyboard-concept-card"
-              key={concept.title}
-            >
-              <div className="storyboard-concept-icon">
-                <Icon size={25} />
-              </div>
-
-              <span>{concept.subtitle}</span>
-              <h3>{concept.title}</h3>
-              <p>{concept.description}</p>
+      <section className="storyboard-concepts-section" aria-labelledby="storyboard-characters-title">
+        <div className="storyboard-section-heading">
+          <span className="storyboard-small-label">THE STORY BEHIND THE CODE</span>
+          <h2 id="storyboard-characters-title">Meet the Kitchen Team</h2>
+          <p>Each part of the restaurant has a matching role in our Python program.</p>
+        </div>
+        <div className="storyboard-concepts">
+          {characters.map(({ icon: Icon, label, title, description }) => (
+            <article className="storyboard-concept-card" key={title}>
+              <div className="storyboard-concept-icon"><Icon size={22} /></div>
+              <span>{label}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
             </article>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      </section>
 
-      <div className="storyboard-explanation">
+      <section className="storyboard-explanation" aria-label="Python concept and story workflow">
         <div className="storyboard-explanation-copy">
-          <span className="storyboard-small-label">
-            THE TECHNICAL CONCEPT
-          </span>
-
-          <h2>
-            What is multithreading using
-            a priority queue?
-          </h2>
-
+          <span className="storyboard-small-label">FROM THE KITCHEN TO PYTHON</span>
+          <h2>What's happening behind the story?</h2>
           <p>
-            Multithreading allows a Python program to
-            manage multiple threads of execution
-            concurrently.
+            <strong>Multithreading</strong> lets a program manage several threads of execution concurrently.
+            In our restaurant, each worker is like a chef who can handle an assigned order.
           </p>
-
           <p>
-            A priority queue stores tasks along with
-            their priorities. When worker threads request
-            a task, the queue provides the available task
-            with the highest priority according to its
-            ordering rules.
+            A <strong>priority queue</strong> stores tasks with their priorities. When a worker requests a task,
+            it receives the highest-priority task that is <em>still waiting</em> in the queue.
+            An order already being prepared isn't automatically interrupted when a more urgent one arrives.
           </p>
-
-          <p>
-            This approach can be useful for organizing
-            background work, handling requests and
-            processing tasks with different importance
-            levels.
-          </p>
-
           <div className="storyboard-note">
-            <BookOpen size={19} />
-            <p>
-              <strong>Python connection:</strong> The
-              concepts can be implemented using
-              {" "}<code>threading</code> and
-              {" "}<code>queue.PriorityQueue</code>.
-            </p>
+            <BookOpen size={20} />
+            <p><strong>Python connection:</strong> We can model the idea using <code>threading</code> and <code>queue.PriorityQueue</code>. The queue is thread-safe for putting and getting tasks; separate locks may be required for other shared data. Task priority does not control operating-system thread scheduling.</p>
           </div>
         </div>
-
         <div className="storyboard-steps">
-          <span className="storyboard-small-label">
-            HOW THE WORKFLOW UNFOLDS
-          </span>
-
-          {steps.map((step, index) => (
-            <div className="storyboard-step" key={index}>
-              <span className="storyboard-step-number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <p>{step}</p>
+          <span className="storyboard-small-label">HOW THE STORY UNFOLDS</span>
+          {workflow.map((step, index) => (
+            <div className="storyboard-step" key={step.title}>
+              <span className="storyboard-step-number">{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      <div className="storyboard-learning">
+      <section className="storyboard-learning" aria-labelledby="storyboard-learning-title">
         <div className="storyboard-section-heading">
-          <span className="storyboard-small-label">
-            MY LEARNING OUTCOMES
-          </span>
-          <h2>What I Took Away</h2>
+          <span className="storyboard-small-label">WHAT THIS ACTIVITY TAUGHT ME</span>
+          <h2 id="storyboard-learning-title">What I Took Away</h2>
         </div>
-
         <div className="storyboard-learning-grid">
-          {[
-            "Understood the roles of main and worker threads.",
-            "Explored priority-based task processing.",
-            "Learned why synchronization matters.",
-            "Connected Python concepts with a real-life analogy.",
-          ].map((item) => (
+          {takeaways.map((item) => (
             <div className="storyboard-learning-item" key={item}>
-              <CheckCircle2 size={19} />
-              <p>{item}</p>
+              <CheckCircle2 size={18} /><p>{item}</p>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      <div className="storyboard-reflection">
-        <Heart size={25} />
+      <section className="storyboard-reflection">
+        <Heart size={24} aria-hidden="true" />
         <span>MY LITTLE REFLECTION</span>
-
-        <h2>
-          Complex concepts become simpler
-          when we give them a story.
-        </h2>
-
+        <h2>Sometimes a story makes the code click.</h2>
         <p>
-          I enjoyed presenting a technical topic through
-          a creative kitchen analogy. It helped me think
-          about the flow of multithreading in a more
-          visual and memorable way.
+          I enjoyed thinking of threads as chefs and queued tasks as restaurant orders.
+          It was a fun way to connect a technical lesson with something familiar, and it
+          reminded me that explaining an idea creatively can help me understand it better too.
         </p>
-      </div>
+      </section>
 
       {imageOpen && (
-        <div
-          className="storyboard-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Full storyboard"
-          onClick={() => setImageOpen(false)}
-        >
-          <button
-            type="button"
-            className="storyboard-lightbox-close"
-            onClick={() => setImageOpen(false)}
-            aria-label="Close storyboard"
-          >
-            <X size={23} />
-          </button>
-
-          <img
-            src={storyboardImage}
-            alt="Full multithreading priority queue storyboard"
-            onClick={(event) => event.stopPropagation()}
-          />
+        <div className="storyboard-lightbox" role="dialog" aria-modal="true" aria-label="Full storyboard" onClick={() => setImageOpen(false)}>
+          <button type="button" className="storyboard-lightbox-close" onClick={() => setImageOpen(false)} aria-label="Close storyboard"><X size={22} /></button>
+          <img src={storyboardImage} alt="Enlarged original kitchen-themed multithreading priority queue storyboard" onClick={(event) => event.stopPropagation()} />
         </div>
       )}
     </section>
   );
 }
-
-export default Storyboard;
