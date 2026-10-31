@@ -1593,3 +1593,283 @@ body {
     font-size: 14px;
   }
 }
+
+/* ===========================================
+   FINAL MOBILE RESPONSIVE REFINEMENT
+   Keep desktop styling unchanged
+   =========================================== */
+
+@media (max-width: 760px) {
+
+  html, body, #root {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .site-shell {
+    width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+    background: #DEE8DF;
+  }
+
+  /* Compact header */
+
+  .site-header {
+    width: 100%;
+    height: 70px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .site-header .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  .site-header .brand > span:last-child {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .site-header .brand-mark {
+    width: 37px;
+    height: 37px;
+    flex-shrink: 0;
+  }
+
+  /* Hide full desktop navigation */
+
+  .site-header .floating-nav {
+    display: none;
+  }
+
+  /* Mobile menu button */
+
+  .site-header .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    padding: 0;
+    border-radius: 12px;
+    border: 1px solid #D4E1D7;
+    background: #FFFFFF;
+    color: #244D4B;
+    cursor: pointer;
+  }
+
+  /* Dropdown menu, shown only when opened */
+
+  .mobile-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    width: calc(100% - 36px);
+    margin: 0 18px 14px;
+    padding: 12px;
+    border: 1px solid #D7E5DB;
+    border-radius: 17px;
+    background: #FFFFFF;
+    box-shadow: 0 12px 28px rgba(29, 65, 53, 0.08);
+    position: relative;
+    z-index: 30;
+  }
+
+  .mobile-nav button {
+    min-width: 0;
+    padding: 12px 8px;
+    border: 1px solid #E3ECE5;
+    border-radius: 9px;
+    background: #F0F5F0;
+    color: #28594F;
+    text-align: center;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.35;
+    cursor: pointer;
+    white-space: normal;
+  }
+
+  .mobile-nav button:active,
+  .mobile-nav button:focus-visible {
+    background: #28594F;
+    color: #FFFFFF;
+  }
+
+  /* Hero: one column, proper phone width */
+
+  .hero {
+    width: 100%;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+    padding: 28px 20px 45px;
+    align-items: start;
+  }
+
+  .hero-content,
+  .hero-aside,
+  .home-explore {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 12vw, 65px);
+    letter-spacing: -2.5px;
+    line-height: 1.09;
+    margin: 18px 0;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .hero-actions button {
+    min-width: 0;
+    font-size: 12px;
+    padding: 13px 15px;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 23px;
+    font-size: 11px;
+  }
+
+  /* Featured card under hero text */
+
+  .hero-feature {
+    width: 100%;
+    min-height: 0;
+    padding: 24px;
+    border-radius: 21px;
+  }
+
+  .feature-small {
+    margin-top: 28px;
+  }
+
+  .hero-feature h2 {
+    font-size: clamp(30px, 8vw, 39px);
+    line-height: 1.2;
+  }
+
+  .feature-bottom {
+    padding-top: 18px;
+  }
+
+  /* Home exploration cards */
+
+  .home-explore {
+    grid-column: 1 / -1;
+    margin-top: 15px;
+  }
+
+  .home-explore .section-intro {
+    margin-bottom: 18px;
+  }
+
+  .explore-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .explore-card {
+    min-height: 0;
+    padding: 21px;
+    border-radius: 17px;
+  }
+
+  .explore-card h3 {
+    font-size: 19px;
+  }
+
+  .explore-card p {
+    font-size: 13px;
+  }
+
+  /* Other pages stay within phone width */
+
+  .content-page,
+  .stars-page,
+  .classroom-page,
+  .padlet-page,
+  .storyboard-page,
+  .cp-page,
+  .elp-page {
+    max-width: 100%;
+    min-width: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .stars-page .stars-layout,
+  .stars-page .highlight-grid,
+  .assignments-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Footer */
+
+  .site-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 25px 18px;
+    text-align: center;
+  }
+}
+
+/* Narrow phones */
+
+@media (max-width: 390px) {
+  .hero h1 {
+    font-size: 45px;
+  }
+
+  .site-header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .hero {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+
+  .mobile-nav {
+    margin-left: 14px;
+    margin-right: 14px;
+    width: calc(100% - 28px);
+  }
+}
