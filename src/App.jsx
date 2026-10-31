@@ -160,19 +160,19 @@ const assignments = [
 // NAVIGATION - ALL TEN PAGES
 // =============================================
 
+
 const navigation = [
   { id: "home", label: "Home", icon: Home },
   { id: "stars", label: "My STARS", icon: Star },
-  { id: "assignments", label: "Assignments", icon: BookOpen },
-  { id: "classroom", label: "Classroom", icon: Users },
+  { id: "assignments", label: "VTOP Labs", icon: BookOpen },
+  { id: "classroom", label: "Class Activities", icon: Users },
   { id: "padlet", label: "Padlet", icon: FileText },
   { id: "storyboard", label: "Storyboard", icon: BookOpen },
   { id: "project", label: "Course Project", icon: Code2 },
   { id: "notes", label: "Class Notes", icon: BookOpen },
   { id: "materials", label: "Course Materials", icon: BookOpen },
-  { id: "extra-lab", label: "Extra Lab", icon: ClipboardList },
+  { id: "extra-lab", label: "Hands-on Practice", icon: ClipboardList },
 ];
-
 // =============================================
 // REUSABLE HOME EXPLORE CARD
 // =============================================
