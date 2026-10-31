@@ -1,5 +1,6 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   ArrowUpRight,
   BookOpen,
@@ -130,34 +131,59 @@ const activities = [
 function ClassroomActivities() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  function changePhoto(direction) {
+  const openPhoto = useCallback((images, index) => {
+    // The photo gets its own browser-history entry without changing the page URL.
+    window.history.pushState(
+      { ...(window.history.state || {}), classroomPhoto: true },
+      "",
+      window.location.href
+    );
+    setSelectedPhoto({ images, index });
+  }, []);
+
+  const closePhoto = useCallback(() => {
+    if (window.history.state?.classroomPhoto) {
+      window.history.back();
+    } else {
+      setSelectedPhoto(null);
+    }
+  }, []);
+
+  const changePhoto = useCallback((direction) => {
     setSelectedPhoto((current) => {
       if (!current) return null;
-
       return {
         ...current,
-        index:
-          (current.index + direction + current.images.length) %
-          current.images.length,
+        index: (current.index + direction + current.images.length) % current.images.length,
       };
     });
-  }
+  }, []);
 
   useEffect(() => {
     if (!selectedPhoto) return;
 
-    function handleKeyDown(event) {
-      if (event.key === "Escape") setSelectedPhoto(null);
+    const before = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // Capture this before App.jsx's page-navigation popstate handler.
+    function onBack(event) {
+      event.stopImmediatePropagation();
+      setSelectedPhoto(null);
+    }
+    function onKey(event) {
+      if (event.key === "Escape") closePhoto();
       if (event.key === "ArrowLeft") changePhoto(-1);
       if (event.key === "ArrowRight") changePhoto(1);
     }
 
-    window.addEventListener("keydown", handleKeyDown);
-
+    window.addEventListener("popstate", onBack, true);
+    window.addEventListener("keydown", onKey);
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = before;
+      window.removeEventListener("popstate", onBack, true);
+      window.removeEventListener("keydown", onKey);
     };
-  }, [selectedPhoto]);
+  }, [selectedPhoto, closePhoto, changePhoto]);
 
   return (
     <section className="classroom-page page-enter">
@@ -224,12 +250,7 @@ function ClassroomActivities() {
                     type="button"
                     className="activity-photo-button"
                     key={photo.src}
-                    onClick={() =>
-                      setSelectedPhoto({
-                        images: activity.images,
-                        index,
-                      })
-                    }
+                    onClick={() => openPhoto(activity.images, index)}
                     aria-label={`View photograph: ${photo.caption}`}
                   >
                     <img
@@ -377,62 +398,62 @@ function ClassroomActivities() {
         </p>
       </div>
 
-      {selectedPhoto && (
-        <div
-          className="classroom-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Classroom photograph viewer"
-          onClick={() => setSelectedPhoto(null)}
-        >
-          <button
-            className="lightbox-close"
-            onClick={() => setSelectedPhoto(null)}
-            aria-label="Close viewer"
-          >
-            <X />
-          </button>
-
+      {selectedPhoto &&
+        createPortal(
           <div
-            className="lightbox-content"
-            onClick={(event) => event.stopPropagation()}
+            className="classroom-lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Classroom photograph viewer"
+            onClick={closePhoto}
           >
-            <img
-              src={selectedPhoto.images[selectedPhoto.index].src}
-              alt={
-                selectedPhoto.images[selectedPhoto.index].caption
-              }
-            />
+            <button
+              type="button"
+              className="lightbox-close"
+              onClick={(event) => {
+                event.stopPropagation();
+                closePhoto();
+              }}
+              aria-label="Close photograph and return to Classroom Activities"
+            >
+              <X size={23} />
+            </button>
 
-            <p>
-              {selectedPhoto.images[selectedPhoto.index].caption}
-            </p>
+            <div
+              className="lightbox-content"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <img
+                src={selectedPhoto.images[selectedPhoto.index].src}
+                alt={selectedPhoto.images[selectedPhoto.index].caption}
+              />
+              <p>{selectedPhoto.images[selectedPhoto.index].caption}</p>
 
-            {selectedPhoto.images.length > 1 && (
-              <div className="lightbox-controls">
-                <button
-                  onClick={() => changePhoto(-1)}
-                  aria-label="Previous photograph"
-                >
-                  <ChevronLeft />
-                </button>
-
-                <span>
-                  {selectedPhoto.index + 1} /{" "}
-                  {selectedPhoto.images.length}
-                </span>
-
-                <button
-                  onClick={() => changePhoto(1)}
-                  aria-label="Next photograph"
-                >
-                  <ChevronRight />
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+              {selectedPhoto.images.length > 1 && (
+                <div className="lightbox-controls">
+                  <button
+                    type="button"
+                    onClick={() => changePhoto(-1)}
+                    aria-label="Previous photograph"
+                  >
+                    <ChevronLeft size={22} />
+                  </button>
+                  <span>
+                    {selectedPhoto.index + 1} / {selectedPhoto.images.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => changePhoto(1)}
+                    aria-label="Next photograph"
+                  >
+                    <ChevronRight size={22} />
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>,
+          document.body
+        )}
     </section>
   );
 }
