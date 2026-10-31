@@ -1,430 +1,67 @@
-
-/* ====================================
-   EXTRA LAB PRACTICE PAGE
-   ==================================== */
-
-.elp-page {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 40px 28px 55px;
-  color: #263e4a;
-}
-
-.elp-page * {
-  box-sizing: border-box;
-}
-
-/* HERO */
-
-.elp-hero {
-  max-width: 850px;
-  margin-bottom: 24px;
-}
-
-.elp-kicker,
-.elp-section-heading > span,
-.elp-number {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1.3px;
-  color: #477f73;
-}
-
-.elp-hero h1 {
-  font-family: Manrope, sans-serif;
-  font-size: clamp(37px, 5vw, 60px);
-  line-height: 1.15;
-  letter-spacing: -2px;
-  margin: 14px 0;
-}
-
-.elp-hero h1 em {
-  font-family: "Playfair Display", serif;
-  color: #4f8e80;
-  font-weight: 500;
-}
-
-.elp-hero > p {
-  max-width: 760px;
-  color: #547067;
-  font-size: 14px;
-  line-height: 1.75;
-}
-
-/* STATS */
-
-.elp-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.elp-stats > span {
-  padding: 11px 16px;
-  background: #edf4ed;
-  border: 1px solid #d5e4d8;
-  border-radius: 11px;
-  color: #5d786c;
-  font-size: 12px;
-}
-
-.elp-stats strong {
-  color: #285e52;
-  font-size: 18px;
-  margin-right: 5px;
-}
-
-/* SEARCH AND FILTERS */
-
-.elp-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 13px;
-  margin: 24px 0;
-}
-
-.elp-search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  min-width: 230px;
-  padding: 12px 14px;
-  border: 1px solid #cfdfd4;
-  border-radius: 12px;
-  background: white;
-  color: #578c7b;
-}
-
-.elp-search input {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: #263e4a;
-  font-size: 13px;
-}
-
-.elp-search button {
-  border: 0;
-  background: transparent;
-  color: #567d71;
-  cursor: pointer;
-}
-
-.elp-filters {
-  display: flex;
-  gap: 5px;
-  padding: 4px;
-  border: 1px solid #ceddd2;
-  border-radius: 12px;
-  background: #edf4ec;
-}
-
-.elp-filters button {
-  border: 0;
-  border-radius: 8px;
-  padding: 10px 13px;
-  background: transparent;
-  color: #5c766d;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.elp-filters button.active {
-  background: #285c52;
-  color: white;
-}
-
-/* SECTIONS */
-
-.elp-section {
-  margin-top: 34px;
-}
-
-.elp-section-heading {
-  margin-bottom: 15px;
-}
-
-.elp-section-heading h2 {
-  margin: 7px 0;
-  font-size: clamp(24px, 3vw, 32px);
-  letter-spacing: -0.8px;
-}
-
-.elp-section-heading p {
-  margin: 0;
-  color: #628073;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-/* GRIDS */
-
-.elp-assessment-grid,
-.elp-practice-grid,
-.elp-activities-grid {
-  display: grid;
-  gap: 15px;
-  align-items: stretch;
-}
-
-.elp-assessment-grid,
-.elp-activities-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.elp-practice-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-/* CARDS */
-
-.elp-card {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding: 22px;
-  background: white;
-  border: 1px solid #d8e5dc;
-  border-radius: 17px;
-  box-shadow: 0 5px 24px #294e3e08;
-}
-
-.elp-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 13px;
-}
-
-.elp-icon {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  background: #e8f1e9;
-  color: #438170;
-  border-radius: 12px;
-}
-
-.elp-format {
-  padding: 7px 9px;
-  background: #f1f6f1;
-  color: #6c9182;
-  border-radius: 7px;
-  font-size: 10px;
-  font-weight: 800;
-}
-
-.elp-card h3 {
-  margin: 10px 0 5px;
-  color: #284c43;
-  font-size: 20px;
-  line-height: 1.35;
-  letter-spacing: -0.4px;
-}
-
-.elp-subtitle {
-  margin: 0 0 12px;
-  color: #558777;
-  font-size: 12px;
-}
-
-.elp-description {
-  margin: 5px 0 14px;
-  color: #617c6e;
-  font-size: 12.5px;
-  line-height: 1.75;
-}
-
-.elp-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 8px 0 15px;
-}
-
-.elp-tags span {
-  padding: 6px 8px;
-  background: #eaf3ec;
-  color: #487e70;
-  border-radius: 7px;
-  font-size: 10px;
-}
-
-.elp-points {
-  display: grid;
-  gap: 9px;
-  padding: 0;
-  margin: 2px 0 17px;
-  list-style: none;
-}
-
-.elp-points li {
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  color: #61776d;
-  font-size: 12px;
-  line-height: 1.6;
-}
-
-.elp-points svg {
-  flex-shrink: 0;
-  color: #5c9b82;
-  margin-top: 2px;
-}
-
-/* FILE ACTION BUTTONS */
-
-.elp-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px solid #eef1eb;
-}
-
-.elp-actions a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 10px 12px;
-  border-radius: 9px;
-  font-size: 11px;
-  font-weight: 800;
-  text-decoration: none;
-}
-
-.elp-open {
-  background: #28584e;
-  color: white;
-}
-
-.elp-download {
-  background: white;
-  color: #427869;
-  border: 1px solid #d7e4d8;
-}
-
-.elp-actions a:hover {
-  filter: brightness(0.95);
-}
-
-/* EXTRA ACTIVITY WORKFLOW */
-
-.elp-activity-card .elp-description {
-  min-height: 70px;
-}
-
-.elp-activity-steps {
-  display: grid;
-  gap: 8px;
-  margin: 10px 0 18px;
-}
-
-.elp-activity-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  background: #edf4ee;
-  border: 1px solid #dce9df;
-  border-radius: 10px;
-  padding: 11px 13px;
-}
-
-.elp-activity-step > span {
-  flex-shrink: 0;
-  font-size: 12px;
-  font-weight: 800;
-  color: #43816f;
-}
-
-.elp-activity-step p {
-  margin: 0;
-  color: #45665a;
-  font-size: 12px;
-  line-height: 1.65;
-}
-
-/* FOOTNOTE */
-
-.elp-footnote {
-  display: flex;
-  align-items: flex-start;
-  gap: 9px;
-  padding-top: 18px;
-  margin: 30px 0 0;
-  border-top: 1px solid #cbdccc;
-  color: #587a6b;
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-.elp-footnote svg {
-  flex-shrink: 0;
-}
-
-.elp-empty {
-  padding: 30px;
-  background: #edf4ed;
-  color: #607e6f;
-  border-radius: 12px;
-  text-align: center;
-}
-
-/* RESPONSIVE DESIGN */
-
-@media (max-width: 1000px) {
-  .elp-practice-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 700px) {
-  .elp-page {
-    padding: 30px 18px 40px;
-  }
-
-  .elp-assessment-grid,
-  .elp-practice-grid,
-  .elp-activities-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .elp-toolbar {
-    align-items: stretch;
-  }
-
-  .elp-filters {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .elp-filters button {
-    flex: 1;
-  }
-
-  .elp-card {
-    padding: 19px;
-  }
-
-  .elp-section {
-    margin-top: 28px;
-  }
-
-  .elp-activity-card .elp-description {
-    min-height: 0;
-  }
+/* Extra Lab — warm sage, consistent with the portfolio */
+.elp-page {width:100%;max-width:1180px;margin:0 auto;padding:34px 28px 58px;color:#263e4a}
+.elp-page * {box-sizing:border-box}
+.elp-hero {margin:0 0 25px;max-width:850px}
+.elp-kicker,.elp-section-heading>span,.elp-number {display:inline-flex;align-items:center;gap:8px;color:#50887c;font-size:10px;font-weight:800;letter-spacing:1.15px}
+.elp-hero h1 {margin:12px 0 12px;font-family:Manrope,sans-serif;font-size:clamp(34px,4.3vw,53px);line-height:1.19;letter-spacing:-1.7px;color:#283f4a}
+.elp-hero h1 em {color:#548e80;font-family:'Playfair Display',serif;font-weight:500}
+.elp-hero>p {max-width:750px;margin:0;color:#587367;font-size:14px;line-height:1.8}
+.elp-stats {display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.elp-stats>span {display:inline-flex;align-items:center;gap:6px;padding:9px 13px;border:1px solid #d2e1d5;border-radius:10px;background:#eef4ee;color:#5d786d;font-size:11px}
+.elp-stats strong {font-size:16px;color:#2b6455}
+.elp-toolbar {display:flex;gap:12px;align-items:center;margin:20px 0 30px}
+.elp-search {display:flex;align-items:center;gap:9px;min-width:0;flex:1;padding:12px 13px;background:white;border:1px solid #d4e1d7;border-radius:11px;color:#498476}
+.elp-search input {flex:1;min-width:0;border:0;outline:none;background:transparent;color:#29483e;font-size:13px}
+.elp-search button {border:0;background:transparent;color:#50887c;cursor:pointer}
+.elp-filters {display:flex;gap:4px;padding:4px;border:1px solid #d2e1d5;background:#eef4ee;border-radius:11px}
+.elp-filters button {border:0;border-radius:8px;background:transparent;padding:9px 12px;font-size:11px;font-weight:700;color:#59766b;cursor:pointer;white-space:nowrap}
+.elp-filters button.active {background:#285d52;color:white}
+.elp-section {margin:33px 0 0}
+.elp-section-heading {margin-bottom:15px}
+.elp-section-heading h2 {margin:6px 0 6px;font-size:clamp(24px,3vw,31px);line-height:1.25;letter-spacing:-.7px;color:#294841}
+.elp-section-heading p {margin:0;font-size:13px;color:#688074;line-height:1.6}
+.elp-assessment-grid,.elp-practice-grid,.elp-activities-grid {display:grid;align-items:stretch;gap:14px}
+.elp-assessment-grid,.elp-activities-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+.elp-practice-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
+.elp-card {min-width:0;display:flex;flex-direction:column;background:white;padding:21px;border:1px solid #d9e6db;border-radius:17px;box-shadow:0 6px 20px rgba(31,66,48,.035)}
+.elp-card-top {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.elp-icon {display:grid;place-items:center;width:43px;height:43px;flex-shrink:0;border-radius:12px;background:#eaf3eb;color:#4a8877}
+.elp-format {padding:6px 8px;border-radius:7px;background:#f1f6f1;color:#648b7d;font-size:10px;font-weight:800}
+.elp-card h3 {margin:8px 0 5px;font-size:19px;line-height:1.35;color:#2c5147;letter-spacing:-.35px}
+.elp-subtitle {margin:0 0 10px;color:#578c7b;font-size:12px;line-height:1.55}
+.elp-description {margin:5px 0 11px;color:#5d776b;font-size:12.5px;line-height:1.7}
+.elp-tags {display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 15px}
+.elp-tags span {padding:5px 8px;background:#eaf3ec;border-radius:6px;color:#548478;font-size:10px}
+.elp-points {display:grid;gap:8px;list-style:none;margin:0 0 17px;padding:0}
+.elp-points li {display:flex;align-items:flex-start;gap:9px;color:#5d776b;font-size:12px;line-height:1.6}
+.elp-points li svg {flex-shrink:0;margin-top:2px;color:#5b9b84}
+.elp-actions {display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:13px;border-top:1px solid #ebf0eb}
+.elp-actions a {display:inline-flex;align-items:center;gap:7px;border-radius:8px;padding:10px 13px;font-size:11px;font-weight:800;text-decoration:none;transition:filter .15s}
+.elp-actions a:hover {filter:brightness(.94)}
+.elp-open {background:#285e53;color:white}
+.elp-download {background:white;border:1px solid #d1e0d6;color:#477d70}
+/* Equal-height activity cards. No excessive empty space before actions. */
+.elp-activity-card {gap:0}
+.elp-activity-card .elp-description {min-height:0;margin-bottom:9px}
+.elp-activity-steps {display:grid;gap:7px;margin:4px 0 17px}
+.elp-activity-step {display:flex;gap:11px;align-items:flex-start;padding:10px 12px;background:#eef4ef;border:1px solid #dce8de;border-radius:9px}
+.elp-activity-step>span {flex-shrink:0;color:#498673;font-size:11px;font-weight:800;line-height:1.65}
+.elp-activity-step p {margin:0;color:#526c60;font-size:12px;line-height:1.6}
+.elp-activity-card .elp-actions {margin-top:auto}
+.elp-footnote {display:flex;align-items:flex-start;gap:9px;margin:29px 0 0;padding-top:16px;border-top:1px solid #cbdccd;color:#577b6d;font-size:12px;line-height:1.7}
+.elp-footnote svg {flex-shrink:0}
+.elp-empty {padding:28px;text-align:center;border-radius:12px;background:#eef4ef;color:#5a7568}
+@media(max-width:1050px) {.elp-practice-grid {grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px) {
+  .elp-page {max-width:100%;padding:25px 18px 42px}
+  .elp-hero h1 {font-size:clamp(32px,8vw,44px);letter-spacing:-1px}
+  .elp-toolbar {flex-direction:column;align-items:stretch;gap:10px}
+  .elp-search {width:100%;flex:none}
+  .elp-filters {width:100%}
+  .elp-filters button {flex:1;padding:10px 6px}
+  .elp-assessment-grid,.elp-practice-grid,.elp-activities-grid {grid-template-columns:minmax(0,1fr)}
+  .elp-card {padding:18px}
+  .elp-section {margin-top:27px}
+  .elp-stats {gap:7px}
+  .elp-stats>span {padding:8px 10px}
 }

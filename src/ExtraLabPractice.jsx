@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import {
   ArrowUpRight,
-  BarChart3,
+  Table2,
   BookOpen,
   BrainCircuit,
   CheckCircle2,
@@ -135,28 +135,28 @@ const practiceFiles = [
 const activities = [
   {
     id: "gvi",
-    title: "Green View Index — City Tree Coverage",
-    subtitle: "Real-World Data Analysis with Pandas",
-    icon: BarChart3,
+    title: "Visual Capitalist — Pivot Table Practice",
+    subtitle: "Pandas · GroupBy · Pivot Tables",
+    icon: Table2,
     tags: [
       "Pandas",
       "DataFrame",
-      "GVI",
-      "30 Cities",
-      "Data Analysis",
+      "Pivot Tables",
+      "GroupBy",
+      "Visual Capitalist",
     ],
     description:
-      "We explored a real-world ranking of 30 cities and their Green View Index values. We worked with city names, country codes, rankings and GVI percentages to practise working with structured data in Pandas.",
+      "We used a Visual Capitalist dataset about tree coverage in 30 cities to practise creating DataFrames, grouping records and summarizing information with Pandas pivot tables. The focus of this activity was data analysis, not the Green View Index itself.",
     steps: [
-      "Collected rank, city, country and GVI values for 30 cities.",
+      "Worked with a 30-city dataset containing rank, city, country and GVI columns.",
       "Created a Python dictionary and converted it into a Pandas DataFrame.",
-      "Inspected the data using head(), info() and describe().",
-      "Explored sorting, rankings and country-wise summaries.",
-      "Understood how GVI represents greenery visible from street-level imagery.",
+      "Inspected the dataset and organized its columns for analysis.",
+      "Grouped cities by country to compare counts and GVI values.",
+      "Practised pivot_table() for country-wise city counts and average GVI.",
     ],
     source:
       "https://www.visualcapitalist.com/ranked-the-worlds-cities-with-the-most-tree-coverage/",
-    sourceLabel: "View Original Dataset",
+    sourceLabel: "View Data Source",
   },
   {
     id: "semantic",
@@ -391,21 +391,18 @@ export default function ExtraLabPractice() {
       <header className="elp-hero">
         <span className="elp-kicker">
           <BookOpen size={16} />
-          ADVANCED PYTHON · EXTRA LEARNING
+          CSI3007 · ADVANCED PYTHON PROGRAMMING
         </span>
 
         <h1>
-          Extra Lab Practice
+          Lab Practice
           <em> & Question Papers.</em>
         </h1>
 
         <p>
-          Beyond our regular assignments, these are
-          the extra questions, practice materials
-          and hands-on activities we explored during
-          our Advanced Python Programming labs.
-          I've kept everything together to revisit
-          and practise whenever needed.
+          A collection of the question papers, additional coding exercises,
+          and hands-on Python activities I worked through during the semester.
+          My submitted VTOP assignments are kept separately.
         </p>
 
         <div className="elp-stats">
@@ -416,7 +413,7 @@ export default function ExtraLabPractice() {
             <strong>06</strong> Practice Files
           </span>
           <span>
-            <strong>02</strong> Extra Activities
+            <strong>02</strong> Hands-on Activities
           </span>
         </div>
       </header>
@@ -526,7 +523,7 @@ export default function ExtraLabPractice() {
         <section className="elp-section">
           <div className="elp-section-heading">
             <span>03 / CLASSROOM EXPLORATIONS</span>
-            <h2>Extra Hands-on Activities</h2>
+            <h2>Hands-on Explorations</h2>
             <p>
               A few interesting activities where we
               explored real-world data and AI concepts
