@@ -1,5 +1,5 @@
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   ArrowUpRight,
@@ -11,6 +11,9 @@ import {
   Cpu,
   Heart,
   Mic,
+  Minus,
+  Plus,
+  RotateCcw,
   Sparkles,
   Trophy,
   X,
@@ -130,8 +133,17 @@ const activities = [
 
 function ClassroomActivities() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [zoom, setZoom] = useState(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const dragRef = useRef(null);
+  const resetView = () => { setZoom(1); setPan({ x: 0, y: 0 }); };
+  const adjustZoom = (by) => {
+    setZoom((current) => Math.max(1, Math.min(4, Math.round((current + by) * 10) / 10)));
+    if (by < 0 && zoom + by <= 1) setPan({ x: 0, y: 0 });
+  };
 
-  const openPhoto = useCallback((images, index) => {
+  const openPhoto = (images, index) => {
+    resetView();
     // The photo gets its own browser-history entry without changing the page URL.
     window.history.pushState(
       { ...(window.history.state || {}), classroomPhoto: true },
@@ -139,7 +151,7 @@ function ClassroomActivities() {
       window.location.href
     );
     setSelectedPhoto({ images, index });
-  }, []);
+  };
 
   const closePhoto = useCallback(() => {
     if (window.history.state?.classroomPhoto) {
@@ -149,7 +161,8 @@ function ClassroomActivities() {
     }
   }, []);
 
-  const changePhoto = useCallback((direction) => {
+  const changePhoto = (direction) => {
+    resetView();
     setSelectedPhoto((current) => {
       if (!current) return null;
       return {
@@ -157,7 +170,7 @@ function ClassroomActivities() {
         index: (current.index + direction + current.images.length) % current.images.length,
       };
     });
-  }, []);
+  };
 
   useEffect(() => {
     if (!selectedPhoto) return;
@@ -423,10 +436,41 @@ function ClassroomActivities() {
               className="lightbox-content"
               onClick={(event) => event.stopPropagation()}
             >
-              <img
-                src={selectedPhoto.images[selectedPhoto.index].src}
-                alt={selectedPhoto.images[selectedPhoto.index].caption}
-              />
+              <div className="classroom-zoom-toolbar" aria-label="Photo zoom controls">
+                <button type="button" aria-label="Zoom out" disabled={zoom <= 1} onClick={() => adjustZoom(-0.5)}><Minus size={18} /></button>
+                <span>{Math.round(zoom * 100)}%</span>
+                <button type="button" aria-label="Zoom in" disabled={zoom >= 4} onClick={() => adjustZoom(0.5)}><Plus size={18} /></button>
+                <button type="button" aria-label="Reset zoom" onClick={resetView}><RotateCcw size={18} /></button>
+              </div>
+              <div
+                className="classroom-zoom-stage"
+                onWheel={(event) => {
+                  if (event.ctrlKey) { event.preventDefault(); adjustZoom(event.deltaY < 0 ? 0.5 : -0.5); }
+                }}
+                onPointerDown={(event) => {
+                  if (zoom <= 1) return;
+                  event.currentTarget.setPointerCapture(event.pointerId);
+                  dragRef.current = { x: event.clientX, y: event.clientY, originalX: pan.x, originalY: pan.y };
+                }}
+                onPointerMove={(event) => {
+                  if (!dragRef.current || zoom <= 1) return;
+                  setPan({
+                    x: dragRef.current.originalX + event.clientX - dragRef.current.x,
+                    y: dragRef.current.originalY + event.clientY - dragRef.current.y,
+                  });
+                }}
+                onPointerUp={() => { dragRef.current = null; }}
+                onPointerCancel={() => { dragRef.current = null; }}
+                onDoubleClick={() => { if (zoom === 1) adjustZoom(1); else resetView(); }}
+                style={{ cursor: zoom > 1 ? "grab" : "zoom-in" }}
+              >
+                <img
+                  src={selectedPhoto.images[selectedPhoto.index].src}
+                  alt={selectedPhoto.images[selectedPhoto.index].caption}
+                  draggable={false}
+                  style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }}
+                />
+              </div>
               <p>{selectedPhoto.images[selectedPhoto.index].caption}</p>
 
               {selectedPhoto.images.length > 1 && (
