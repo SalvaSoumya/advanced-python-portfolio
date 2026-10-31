@@ -27,6 +27,7 @@ import CourseProject from "./CourseProject";
 import PythonClassNotes from "./PythonClassNotes";
 import CourseMaterials from "./CourseMaterials";
 import ExtraLabPractice from "./ExtraLabPractice";
+import BlogPage from "./BlogPage";
 import "./index.css";
 
 // =============================================
@@ -157,7 +158,7 @@ const assignments = [
 ];
 
 // =============================================
-// NAVIGATION - ALL TEN PAGES
+// NAVIGATION - ALL ELEVEN PAGES
 // =============================================
 
 
@@ -169,6 +170,7 @@ const navigation = [
   { id: "padlet", label: "Padlet", icon: FileText },
   { id: "storyboard", label: "Storyboard", icon: BookOpen },
   { id: "project", label: "Course Project", icon: Code2 },
+  { id: "blog", label: "Blog", icon: BookOpen },
   { id: "notes", label: "Class Notes", icon: BookOpen },
   { id: "materials", label: "Course Materials", icon: BookOpen },
   { id: "extra-lab", label: "Hands-on Practice", icon: ClipboardList },
@@ -364,6 +366,15 @@ function HomePage({ navigate }) {
             description="A two-part disaster data integration and intelligent assessment platform built with Python, FastAPI and React."
             action="Explore our project"
             onClick={() => navigate("project")}
+          />
+
+          <ExploreCard
+            icon={BookOpen}
+            category="MY PYTHON WRITING"
+            title="My Medium Blog"
+            description="Five Priyas, one campus mystery and a simple way to understand Pandas MultiIndex."
+            action="Read about my discovery"
+            onClick={() => navigate("blog")}
           />
 
           <ExploreCard
@@ -934,6 +945,10 @@ function App() {
 
         {page === "project" && (
           <CourseProject />
+        )}
+
+        {page === "blog" && (
+          <BlogPage />
         )}
 
         {page === "notes" && (
