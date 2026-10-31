@@ -1,7 +1,8 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ArrowRight,
+  ArrowLeft,
   ArrowUpRight,
   BookOpen,
   CheckCircle2,
@@ -541,14 +542,19 @@ function StarsPage() {
           <Heart size={24} />
         </span>
         <span className="section-kicker">A HEARTFELT THANK YOU</span>
-        <p>Dear Ma’am,</p>
+        <h2>Thank you for making learning feel special, Ma’am.</h2>
+        <p>Dear Dr. Sharmila Banu K Ma’am,</p>
         <p>
           Thank you for encouraging us to come forward, answer
           questions, volunteer and express our ideas confidently.
           You pushed us beyond simply listening in class and helped
           us become active participants in our own learning.
         </p>
-        
+        <p>
+          Whether it was coming to the dais to write code,
+          explaining something on the board or trying to answer a
+          question, your encouragement made every attempt feel valuable.
+        </p>
         <p>
           The stars brought out the childlike excitement in us and
           made us look forward to participating every day. More than
@@ -560,7 +566,7 @@ function StarsPage() {
           making Advanced Python Programming such a memorable journey!
         </p>
         <div className="stars-signature">
-          With gratitude.
+          With gratitude and happiness,
           <strong>Salva Soumya ♡</strong>
         </div>
       </div>
@@ -714,18 +720,70 @@ function AssignmentsPage({
 // =============================================
 
 function App() {
-  const [page, setPage] = useState("home");
+  const validPage = (value) =>
+    navigation.some((item) => item.id === value) ? value : "home";
+
+  const initialPage = validPage(window.location.hash.slice(1));
+  const [page, setPage] = useState(initialPage);
   const [search, setSearch] = useState("");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [pageTrail, setPageTrail] = useState([initialPage]);
+  const [trailIndex, setTrailIndex] = useState(0);
+
+  // A hash URL gives each section a shareable link without server routing.
+  // Browser Back/Forward updates the visible React page, not an external site.
+  useEffect(() => {
+    if (!window.history.state?.portfolioPage) {
+      window.history.replaceState(
+        { portfolioPage: initialPage }, "", `#${initialPage}`
+      );
+    }
+    const onPopState = () => {
+      const destination = validPage(window.location.hash.slice(1));
+      setPage(destination);
+      setMobileOpen(false);
+      setPageTrail((old) => old.includes(destination) ? old : [...old, destination]);
+      setTrailIndex((old) => {
+        const found = pageTrail.lastIndexOf(destination);
+        return found >= 0 ? found : old;
+      });
+      window.scrollTo({ top: 0, behavior: "instant" });
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [initialPage, pageTrail]);
+
+  function changePage(destination, recordVisit = true) {
+    const next = validPage(destination);
+    if (next === page) { setMobileOpen(false); return; }
+    window.history.pushState({ portfolioPage: next }, "", `#${next}`);
+    setPage(next);
+    setMobileOpen(false);
+    if (recordVisit) {
+      setPageTrail((current) => [...current.slice(0, trailIndex + 1), next]);
+      setTrailIndex(trailIndex + 1);
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   function navigate(destination) {
-    setPage(destination);
-    setMobileOpen(false);
+    changePage(destination);
+  }
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  function goBackInside() {
+    if (trailIndex > 0) {
+      changePage(pageTrail[trailIndex - 1], false);
+      setTrailIndex(trailIndex - 1);
+    } else if (page !== "home") {
+      changePage("home");
+    }
+  }
+
+  function goForwardInside() {
+    if (trailIndex < pageTrail.length - 1) {
+      changePage(pageTrail[trailIndex + 1], false);
+      setTrailIndex(trailIndex + 1);
+    }
   }
 
   const filteredAssignments = assignments.filter(
@@ -820,6 +878,29 @@ function App() {
           ))}
         </nav>
       )}
+
+      {/* SAFE, IN-WEBSITE PAGE HISTORY CONTROLS */}
+      <div className="portfolio-pager" aria-label="Portfolio page controls">
+        <div className="portfolio-pager-actions">
+          <button type="button" onClick={goBackInside}
+            disabled={page === "home" && trailIndex === 0}
+            aria-label="Go to previously visited portfolio page" title="Previous visited page">
+            <ArrowLeft size={17} /> <span>Back</span>
+          </button>
+          <button type="button" onClick={() => navigate("home")}
+            disabled={page === "home"} aria-label="Go to portfolio homepage" title="Portfolio home">
+            <Home size={16} /> <span>Home</span>
+          </button>
+          <button type="button" onClick={goForwardInside}
+            disabled={trailIndex >= pageTrail.length - 1}
+            aria-label="Go forward to a visited portfolio page" title="Forward visited page">
+            <ArrowRight size={17} /> <span>Forward</span>
+          </button>
+        </div>
+        <span className="portfolio-pager-current">
+          {navigation.find((item) => item.id === page)?.label}
+        </span>
+      </div>
 
       {/* MAIN CONTENT */}
       <main id="main-content">

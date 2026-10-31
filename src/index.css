@@ -1873,3 +1873,154 @@ body {
     width: calc(100% - 28px);
   }
 }
+
+/* ==========================================
+   PHONE LAYOUT — FINAL CORRECTION
+   ========================================== */
+
+@media screen and (max-width: 760px) {
+
+  /* Force correct mobile layout */
+  .site-shell {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hero {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100%;
+    padding: 28px 20px 45px;
+    gap: 28px;
+  }
+
+  .hero-content,
+  .hero-aside,
+  .home-explore {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(43px, 11vw, 60px);
+    line-height: 1.1;
+  }
+
+  .hero-feature {
+    width: 100%;
+    min-height: 0;
+  }
+
+  .home-explore {
+    margin-top: 12px;
+  }
+
+  .explore-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px;
+  }
+
+  /* Neat dropdown navigation */
+  .mobile-nav {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 9px;
+    width: calc(100% - 36px);
+    margin: 0 18px 16px;
+    padding: 13px;
+    background: #fff;
+    border: 1px solid #d8e5dc;
+    border-radius: 16px;
+    box-shadow: 0 12px 25px rgba(35, 70, 55, 0.08);
+  }
+
+  .mobile-nav button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 44px;
+    padding: 11px 7px;
+    background: #edf4ee;
+    border: 1px solid #dce8df;
+    border-radius: 9px;
+    color: #28594f;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    white-space: normal;
+  }
+}
+
+/* =========================================================
+   PORTFOLIO NAVIGATION + MOBILE OVERRIDES
+   Keep this last to win over earlier duplicated media rules.
+   ========================================================= */
+.portfolio-pager {
+  width: min(1180px, calc(100% - 40px));
+  margin: 4px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  color: #52766a;
+}
+.portfolio-pager-actions { display: flex; gap: 8px; align-items: center; }
+.portfolio-pager-actions button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  min-height: 35px; padding: 7px 13px;
+  border: 1px solid #ccded2; border-radius: 999px;
+  background: #f7faf6; color: #28584e; font-size: 12px; font-weight: 700;
+}
+.portfolio-pager-actions button:hover:not(:disabled) { background: #e5f0e8; }
+.portfolio-pager-actions button:disabled { opacity: .38; cursor: not-allowed; }
+.portfolio-pager-current { font-size: 12px; font-weight: 800; }
+
+@media (max-width: 760px) {
+  .site-header { height: 69px; }
+  .site-header .brand > span:last-child { display: inline; white-space: nowrap; }
+  .site-header .floating-nav { display: none; }
+  .site-header .mobile-menu-toggle { display: flex; }
+  .mobile-nav {
+    display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    width: calc(100% - 36px); margin: 0 18px 10px;
+    padding: 12px; gap: 8px; background: white;
+    border: 1px solid #d8e5dc; border-radius: 16px;
+    box-shadow: 0 12px 25px rgba(35,70,55,.08);
+  }
+  .mobile-nav button {
+    display: flex; justify-content: center; align-items: center;
+    min-height: 44px; min-width: 0; padding: 10px;
+    border: 1px solid #dce8df; border-radius: 9px;
+    background: #edf4ee; color: #28594f;
+    font-size: 12px; font-weight: 700; text-align: center;
+  }
+  .portfolio-pager {
+    width: calc(100% - 36px); margin: 0 auto;
+    padding: 7px 0; gap: 8px;
+  }
+  .portfolio-pager-actions { gap: 5px; }
+  .portfolio-pager-actions button { min-height: 36px; padding: 8px 10px; font-size: 11px; }
+  .portfolio-pager-current { font-size: 11px; text-align: right; }
+  .hero {
+    display: flex !important; flex-direction: column !important;
+    align-items: stretch !important; gap: 27px;
+    width: 100%; max-width: 100%; padding: 26px 20px 42px;
+  }
+  .hero-content, .hero-aside, .home-explore { width: 100%; max-width: 100%; min-width: 0; }
+  .hero h1 { font-size: clamp(42px,11vw,60px); line-height: 1.1; letter-spacing: -2.5px; }
+  .hero-feature { min-height: 0; }
+  .home-explore { margin-top: 12px; }
+  .explore-grid { display: grid !important; grid-template-columns: minmax(0,1fr) !important; }
+  .content-page, .stars-page, .classroom-page, .padlet-page,
+  .storyboard-page, .cp-page, .elp-page { max-width: 100%; min-width: 0; }
+}
+@media (max-width: 390px) {
+  .portfolio-pager-actions button span { display: none; }
+  .portfolio-pager-actions button { width: 36px; padding: 7px; }
+}
