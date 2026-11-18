@@ -32,12 +32,14 @@ const modules = [
   { id: 6, title: "Data Handling Techniques", hours: 3, description: "Preparing, combining and cleaning real-world data.", topics: ["Data wrangling & munging", "Merging & joining", "Missing values & duplicates", "Loan prediction problem"], files: [
     { file: "Module_6_Data Handling Techniques_V 2.0.pptx", title: "Data Handling Techniques", description: "Cleaning, transformation, Pandas data-wrangling examples and handling missing or duplicate records.", type: "PPTX", count: 36 }
   ] },
-  { id: 7, title: "Web Applications", hours: 4, description: "Python web frameworks, database programming and IoT-related applications.", topics: ["Django, Flask & Web2Py", "NoSQL databases", "IoT devices", "Predictive models & web programming"], files: [] },
+  { id: 7, title: "Web Applications", hours: 4, description: "Python web frameworks, database programming and IoT-related applications.", topics: ["Django, Flask & Web2Py", "NoSQL databases", "IoT devices", "Predictive models & web programming"], files: [
+    { file: "Web Applications.pdf", title: "Web Applications · Study PDF", description: "Additional reference material for the Web Applications module.", type: "PDF" }
+  ] },
   { id: 8, title: "Recent Trends", hours: 2, description: "Recent developments discussed as part of the course syllabus.", topics: ["Syllabus module", "Faculty material not uploaded yet"], files: [] }
 ];
 
 const totalResources = modules.reduce((n, m) => n + m.files.length, 0);
-const formatCount = (f) => `${f.count} ${f.type === "PDF" ? "pages" : "slides"}`;
+const formatCount = (f) => f.count != null ? `${f.count} ${f.type === "PDF" ? "pages" : "slides"}` : (f.type === "PDF" ? "Study document" : "Presentation");
 
 export default function CourseMaterials() {
   const [selected, setSelected] = useState(1);
