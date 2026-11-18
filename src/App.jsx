@@ -221,10 +221,77 @@ function HomePage({ navigate }) {
   return (
     <section className="hero page-enter">
       <div className="hero-content">
-        <span className="eyebrow">
-          <Sparkles size={15} />
-          MY SEMESTER IN PYTHON
-        </span>
+        {/* Prominent academic identity — visible immediately to the faculty reviewer. */}
+        <div
+          aria-label="Fall Semester 2026–27, Advanced Python Programming, CSI3007"
+          style={{
+            width: "100%",
+            maxWidth: 650,
+            background: "#244F48",
+            color: "#F9F7EF",
+            border: "1px solid #426F61",
+            borderRadius: 20,
+            padding: "clamp(20px, 3vw, 28px)",
+            boxShadow: "0 12px 28px rgba(25, 57, 47, 0.15)",
+            marginBottom: 28,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 8,
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginBottom: 18,
+            }}
+          >
+            <span style={{
+              color: "#D5E9DC", fontSize: 11, fontWeight: 800,
+              letterSpacing: "0.14em", textTransform: "uppercase",
+            }}>
+              VIT · Academic Portfolio
+            </span>
+            <span style={{
+              padding: "5px 11px", background: "#E9F2E7", color: "#28574B",
+              borderRadius: 99, fontSize: 11, fontWeight: 800,
+              whiteSpace: "nowrap",
+            }}>
+              CSI3007
+            </span>
+          </div>
+          <div style={{
+            fontSize: 11, color: "#C5DFCE", fontWeight: 800,
+            letterSpacing: "0.12em", textTransform: "uppercase",
+            marginBottom: 6,
+          }}>
+            Academic Term
+          </div>
+          <div style={{
+            fontFamily: 'Georgia, "Times New Roman", serif',
+            fontVariantNumeric: "lining-nums tabular-nums",
+            fontFeatureSettings: '"lnum" 1, "tnum" 1',
+            fontSize: "clamp(25px, 3vw, 35px)", lineHeight: 1.2,
+            fontWeight: 650,
+          }}>
+            Fall Semester 2026–27
+          </div>
+          <div style={{ height: 1, background: "#5B8576", margin: "17px 0" }} />
+          <div style={{
+            fontSize: 11, color: "#C5DFCE", fontWeight: 800,
+            letterSpacing: "0.12em", textTransform: "uppercase",
+            marginBottom: 6,
+          }}>
+            For the Course
+          </div>
+          <div style={{
+            fontSize: "clamp(19px, 2.3vw, 26px)", lineHeight: 1.3,
+            fontWeight: 750,
+            letterSpacing: "-0.02em",
+          }}>
+            Advanced Python Programming
+          </div>
+        </div>
 
         <h1>
           Learning.
@@ -238,10 +305,9 @@ function HomePage({ navigate }) {
 
         <p className="hero-description">
           Hello, I'm <strong>Salva Soumya.</strong>{" "}
-          Welcome to my Advanced Python Programming
-          portfolio — a little space where I share my
-          coding journey, classroom memories, creative
-          projects and everything I learned along the way.
+          Welcome to my Python learning portfolio — a space where I share my
+          coding journey, classroom memories, creative projects and
+          everything I learned along the way.
         </p>
 
         <div className="hero-actions">
@@ -265,11 +331,9 @@ function HomePage({ navigate }) {
         </div>
 
         <div className="hero-meta">
-          <span>CSI3007</span>
+          <span>Vellore Institute of Technology</span>
           <span className="meta-dot" />
-          <span>Advanced Python Programming</span>
-          <span className="meta-dot" />
-          <span>VIT</span>
+          <span>My semester journey</span>
         </div>
       </div>
 
